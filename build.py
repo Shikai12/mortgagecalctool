@@ -10,6 +10,11 @@
   -  V3.8 （、、、、）
 """
 
+import os
+
+# 环境变量控制是否生成备份文件（GitHub Actions 设置 NO_BACKUP=1 禁用备份）
+_NO_BACKUP = os.environ.get('NO_BACKUP', '0') == '1'
+
 import sys
 import io
 
@@ -136,7 +141,9 @@ def write_checksum(path):
 
 
 def backup_file(path, max_backups=10):
-    """Auto backup file"""
+    """Auto backup file (NO_BACKUP=1 to skip)"""
+    if _NO_BACKUP:
+        return None  # Skip backup when NO_BACKUP=1
     path = Path(path)
     if not path.exists():
         return
