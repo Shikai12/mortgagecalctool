@@ -1,4 +1,4 @@
-# mortgagecalctool
+# mortgagecalctool.org
 
 Free online calculators and educational content. Not professional advice.
 
@@ -12,13 +12,6 @@ Free online calculators and educational content. Not professional advice.
 - Sitemap: https://mortgagecalctool.org/sitemap.html
 
 ## Tools
-- Home Affordability Calculator - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/affordability.html
-- Amortization Schedule Calculator - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/amortization.html
-- ARM vs Fixed Rate Comparison - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/arm-vs-fixed.html
-- Down Payment Calculator - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/down-payment.html
-- FHA Loan Calculator 2026 - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/fha-loan.html
-- Mortgage Payment Calculator - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/mortgage-payment.html
-- Refinance Calculator - Free | MortgageCalcTool.org: https://mortgagecalctool.org/tools/refinance-calculator.html
 
 ## Articles
 - Phoenix Heat Wave Hvac Costs Mortgage Budget (phoenix-heat-wave-hvac-costs-mortgage-budget) -- I opened my electric bill last month and almost dropped my coffee. $487. For one month. That's not a utility bill. That's a mortgage payment in some states. I stared at the number for a full minute, c -- July 23, 2026
