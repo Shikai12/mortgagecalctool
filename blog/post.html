@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{TITLE}</title>
+<meta name="description" content="{META_DESC}">
+<meta name="author" content="{AUTHOR_NAME}">
+<link rel="canonical" href="{CANONICAL}">
+<link rel="icon" href="{FAVICON_PATH}" type="image/x-icon">
+
+<meta property="og:title" content="{OG_TITLE}">
+<meta property="og:description" content="{OG_DESC}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{CANONICAL}">
+<meta property="og:image" content="{OG_IMAGE}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{TWITTER_TITLE}">
+<meta name="twitter:description" content="{TWITTER_DESC}">
+<meta name="twitter:image" content="{TWITTER_IMAGE}">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{SCHEMA_HEADLINE}",
+  "description": "{SCHEMA_DESC}",
+  "image": "{SCHEMA_IMAGE}",
+  "author": {
+    "@type": "Person",
+    "name": "{AUTHOR_NAME}",
+    "jobTitle": "{AUTHOR_JOB}",
+    "url": "{AUTHOR_URL}"
+  },
+  "datePublished": "{DATE_PUBLISHED}",
+  "dateModified": "{DATE_MODIFIED}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{SITE_NAME}",
+    "url": "{SITE_URL}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{CANONICAL}"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{SITE_URL}/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "{SITE_URL}/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "{CATEGORY}", "item": "{SITE_URL}/blog/index.html"},
+    {"@type": "ListItem", "position": 4, "name": "{SCHEMA_HEADLINE}", "item": "{CANONICAL}"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="mct-header">
+  <div class="mct-header-inner">
+    <a href="../index.html" class="mct-logo">{SITE_LOGO_HTML}</a>
+    <button class="mct-mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')" aria-label="Toggle menu">&#9776;</button>
+    <nav><ul class="mct-nav" id="mainNav">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools/index.html">Tools</a></li>
+      <li><a href="./index.html">Blog</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<div class="mct-breadcrumb">
+  <a href="../index.html">Home</a> <span>/</span> <a href="./index.html">Blog</a> <span>/</span> <span aria-current="page">{TITLE_PLAIN}</span>
+</div>
+
+<article class="mct-post-container">
+
+  <div class="mct-ad-slot" data-ad-slot="article_top"></div>
+
+  <header class="mct-post-header">
+    <h1>{TITLE}</h1>
+    <div class="mct-post-meta">
+      <span>{DATE_PUBLISHED}</span> &middot; <span>{READTIME}</span> &middot; <span class="mct-category-badge">{CATEGORY}</span>
+    </div>
+    <div class="mct-article-tags">
+      {TAGS}
+    </div>
+  </header>
+
+  <img src="{HERO_IMAGE}" alt="{HERO_ALT}" width="800" height="450" loading="lazy">
+
+  <div class="mct-post-content">
+<!-- ARTICLE_CONTENT_START -->
+{CONTENT}
+<!-- ARTICLE_CONTENT_END -->
+  </div>
+
+  <div class="mct-ad-slot" data-ad-slot="article_middle"></div>
+
+  <div class="mct-author-box">
+    <img src="{AUTHOR_IMAGE}" alt="{AUTHOR_NAME}" class="mct-author-avatar" width="80" height="80" loading="lazy" onerror="this.style.display='none';this.parentNode.querySelector('.mct-author-avatar-fallback').style.display='flex';">
+    <div class="mct-author-avatar-fallback" style="display:none;width:80px;height:80px;border-radius:50%;background:#ddd;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#666;flex-shrink:0;">{AUTHOR_INITIAL}</div>
+    <div class="mct-author-info">
+      <h4 class="mct-author-name">{AUTHOR_NAME}</h4>
+      <p class="mct-author-title">{AUTHOR_TITLE}</p>
+      <p class="mct-author-bio">{AUTHOR_BIO}</p>
+      <p class="mct-author-location">{AUTHOR_LOCATION}</p>
+      <a href="../about.html" class="mct-author-bio-link">Read full bio &rarr;</a>
+    </div>
+  </div>
+
+</article>
+
+<div class="mct-post-footer">
+  <div class="mct-related-articles">
+    <h3>Related Articles</h3>
+    <div id="relatedPosts" class="mct-related-list">
+      {RELATED_ARTICLES_STATIC}
+    </div>
+    <div id="related-articles-dynamic" class="mct-related-list" style="display:none;"></div>
+  </div>
+  <div class="mct-recommended-tools">
+    <h3>Recommended Tools</h3>
+    <div id="relatedTools" class="mct-tool-rec-list">
+      {RECOMMENDED_TOOLS_STATIC}
+    </div>
+    <div id="recommended-tools-dynamic" class="mct-tool-rec-list" style="display:none;"></div>
+  </div>
+</div>
+
+<div class="mct-ad-slot" data-ad-slot="article_bottom"></div>
+
+<footer class="mct-footer">
+  <div class="mct-footer-grid">
+    <div>
+      <h4>Tools</h4>
+      <a href="../tools/affordability.html">Home Affordability Calculator - Free</a>
+      <a href="../tools/amortization.html">Amortization Schedule Calculator - Free</a>
+      <a href="../tools/arm-vs-fixed.html">ARM vs Fixed Rate Mortgage Comparison - Free</a>
+      <a href="../tools/down-payment.html">Down Payment Calculator - Free</a>
+      <a href="../tools/fha-loan.html">FHA Loan Calculator 2026 - Free</a>
+      <a href="../tools/mortgage-payment.html">Mortgage Payment Calculator - Free</a>
+    </div>
+    <div>
+      <h4>Blog & Resources</h4>
+      <a href="../index.html">Home</a>
+      <a href="./index.html">All Articles</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../sitemap.html">Sitemap</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms of Use</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../disclosure.html">Ad Disclosure</a>
+    </div>
+    <div>
+      <h4>About</h4>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+      <p class="mct-footer-disclaimer">For educational purposes only.</p>
+    </div>
+  </div>
+  <div class="mct-footer-bottom">
+    <p>{SITE_NAME}. All rights reserved. This site contains affiliate links and advertisements.</p>
+    <p>Not professional advice. Consult a qualified professional for your specific situation.</p>
+  </div>
+</footer>
+
+<script src="../ads-loader.js"></script>
+<script>
+(function() {
+  var staticContainer = document.getElementById('relatedPosts');
+  var dynamicContainer = document.getElementById('related-articles-dynamic');
+  var staticCards = staticContainer ? staticContainer.querySelectorAll('.mct-related-card').length : 0;
+  if (staticCards >= 3) return;
+
+  fetch('../articles.json')
+    .then(function(r) { return r.json(); })
+    .then(function(articles) {
+      if (!articles || articles.length === 0) return;
+      var currentSlug = '{SLUG}';
+      var current = articles.find(function(a) { return a.slug === currentSlug; });
+      var related = [];
+
+      if (current) {
+        related = articles.filter(function(a) {
+          return a.slug !== currentSlug && a.category === current.category;
+        });
+        if (related.length < 3 && current.tags && current.tags.length) {
+          var tagMatches = articles.filter(function(a) {
+            if (a.slug === currentSlug) return false;
+            if (related.some(function(r) { return r.slug === a.slug; })) return false;
+            return a.tags && a.tags.some(function(t) { return current.tags.indexOf(t) !== -1; });
+          });
+          related = related.concat(tagMatches);
+        }
+        while (related.length < 3) {
+          var rand = articles[Math.floor(Math.random() * articles.length)];
+          if (rand.slug !== currentSlug && !related.some(function(r) { return r.slug === rand.slug; })) {
+            related.push(rand);
+          }
+        }
+      } else {
+        related = articles.slice(0, 3);
+      }
+
+      var html = related.slice(0, 3).map(function(a) {
+        return '<a href="./' + a.slug + '.html" class="mct-related-card">' +
+          '<h4>' + a.title + '</h4>' +
+          '<p>' + (a.date_published || a.date || 'Recent') + '</p></a>';
+      }).join('');
+
+      if (html) {
+        dynamicContainer.innerHTML = html;
+        dynamicContainer.style.display = 'block';
+        if (staticContainer) staticContainer.style.display = 'none';
+      }
+    })
+    .catch(function() {});
+})();
+
+(function() {
+  var staticContainer = document.getElementById('relatedTools');
+  var dynamicContainer = document.getElementById('recommended-tools-dynamic');
+  var staticCards = staticContainer ? staticContainer.querySelectorAll('.mct-related-card').length : 0;
+  if (staticCards >= 2) return;
+
+  var toolMap = {
+    'DEFAULT': [
+      ['../tools/affordability.html', 'Home Affordability Calculator - Free', 'Try our free calculator'],
+      ['../tools/amortization.html', 'Amortization Schedule Calculator - Free', 'Try our free calculator'],
+      ['../tools/arm-vs-fixed.html', 'ARM vs Fixed Rate Mortgage Comparison - Free', 'Try our free calculator']
+    ]
+  };
+  var tools = toolMap['{CATEGORY}'] || toolMap['DEFAULT'] || [];
+  var html = '';
+  for (var i = 0; i < tools.length; i++) {
+    var t = tools[i];
+    html += '<a href="' + t[0] + '" class="mct-related-card">' +
+      '<h4>' + t[1] + '</h4>' +
+      '<p>' + t[2] + '</p></a>';
+  }
+
+  if (html) {
+    dynamicContainer.innerHTML = html;
+    dynamicContainer.style.display = 'block';
+    if (staticContainer) staticContainer.style.display = 'none';
+  }
+})();
+</script>
+
+</body>
+</html>
