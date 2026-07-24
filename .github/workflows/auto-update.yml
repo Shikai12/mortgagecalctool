@@ -2,52 +2,47 @@ name: Auto Update SEO Files
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Run build.py
+      - name: Detect domain
+        id: domain
         run: |
-          set -e
-          python build.py
-          BUILD_EXIT=$?
-          if [ $BUILD_EXIT -ne 0 ]; then
-            echo "::error::build.py failed with exit code $BUILD_EXIT"
-            exit 1
+          if [ -f CNAME ]; then
+            echo "domain=$(cat CNAME)" >> $GITHUB_OUTPUT
+          else
+            echo "domain=${{ github.event.repository.name }}" >> $GITHUB_OUTPUT
           fi
-          echo "build.py completed successfully"
 
-      - name: Verify generated files exist
-        run: |
-          for f in sitemap.xml sitemap.html llms.txt robots.txt articles.json site_archive.json; do
-            if [ ! -f "$f" ]; then
-              echo "::warning::Missing file: $f"
-            fi
-          done
+      - name: Run build script
+        run: python build.py
+        env:
+          NO_BACKUP: 1
+          SITE_DOMAIN: ${{ steps.domain.outputs.domain }}
 
-      - name: Verify homepage markers
+      - name: Clean backup files
         run: |
-          grep -q "INDEX_ARTICLES_START" index.html || echo "::warning::index.html markers check"
-          grep -q "BLOG_ARTICLES_START" blog/index.html || echo "::warning::blog/index.html markers check"
-          grep -q "TOOLS_ARTICLES_START" tools/index.html || echo "::warning::tools/index.html markers check"
+          # 删除 build.py 生成的备份文件
+          find . -name "*.bak.*" -type f -delete
+          find . -name "*.checksum" -type f -delete
+          echo "Backup files cleaned"
 
       - name: Commit and push changes
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "Auto-update SEO files and homepages [$(date -u +%Y-%m-%d_%H:%M)]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update SEO files"
           git push
