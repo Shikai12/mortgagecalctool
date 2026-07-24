@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>FHA Loan Calculator 2026 - Free | MortgageCalcTool.org</title>
+<meta name="description" content="Free FHA loan calculator with updated 2026 limits. Floor $541,287, ceiling $1,249,125.">
+<link rel="stylesheet" href="../style.css"><meta property="og:title" content="FHA Loan Calculator 2026 - Free | MortgageCalcTool.org">
+<meta property="og:description" content="Updated with 2026 FHA limits. Floor: $541,287. Ceiling: $1,249,125. Includes upfront and annual MIP.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mortgagecalctool.org/tools/fha-loan.html">
+<meta property="og:image" content="https://mortgagecalctool.org/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FHA Loan Calculator 2026 - Free | MortgageCalcTool.org">
+<meta name="twitter:description" content="Updated with 2026 FHA limits. Floor: $541,287. Ceiling: $1,249,125. Includes upfront and annual MIP.">
+<meta name="twitter:image" content="https://mortgagecalctool.org/images/og-image.jpg">
+<meta name="twitter:url" content="https://mortgagecalctool.org/tools/fha-loan.html">
+<link rel="canonical" href="https://mortgagecalctool.org/tools/fha-loan.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FHA Loan Calculator 2026",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "url": "https://mortgagecalctool.org/tools/fha-loan.html"
+}
+</script>
+<script src="../ads-loader.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mortgagecalctool.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://mortgagecalctool.org/tools/index.html"},{"@type":"ListItem","position":3,"name":"Fha Loan","item":"https://mortgagecalctool.org/tools/fha-loan.html"}]}
+</script>
+</head>
+<body>
+<header class="mct-header"><div class="mct-header-inner">
+<a href="../index.html" class="mct-logo">MortgageCalc<span>Free Tools</span></a>
+<button class="mct-mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
+<nav><ul class="mct-nav" id="mainNav"><li><a href="../index.html">Home</a></li><li><a href="./index.html">Tools</a></li><li><a href="../blog/index.html">Blog</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<div class="mct-page-header">
+  <div class="mct-container">
+    <h1>FHA Loan Calculator</h1>
+  </div>
+</div>
+<div class="mct-breadcrumb"><div class="mct-container"><a href="../index.html">Home</a> <span>/</span> <a href="./index.html">Tools</a> <span>/</span> FHA Loan</div>
+<div class="mct-ad-slot" data-ad-slot="tool_top"></div></div>
+<main class="mct-container mct-section" style="padding-top:20px;">
+<h1>FHA Loan Calculator <span style="font-size:0.5em;background:#ff7043;padding:3px 10px;border-radius:20px;color:#fff;">2026 Limits</span></h1>
+<p style="color:#64748b;margin-bottom:25px;">Updated with 2026 FHA limits. Floor: $541,287. Ceiling: $1,249,125. Includes upfront and annual MIP.</p>
+<div class="mct-layout-accordion">
+<div class="mct-accordion-item active">
+<div class="mct-accordion-header">FHA Loan Calculator</div>
+<div class="mct-accordion-body">
+<div class="mct-form-row">
+<div class="mct-form-group"><label>Home Price ($)</label><input type="number" id="fhaPrice" value="400000"></div>
+<div class="mct-form-group"><label>Down Payment ($)</label><input type="number" id="fhaDown" value="14000"></div></div>
+<div class="mct-form-row">
+<div class="mct-form-group"><label>Interest Rate (%)</label><input type="number" id="fhaRate" value="6.5" step="0.1"></div>
+<div class="mct-form-group"><label>Loan Term (years)</label><input type="number" id="fhaTerm" value="30"></div></div>
+<div class="mct-form-row">
+<div class="mct-form-group"><label>Annual Property Tax ($)</label><input type="number" id="fhaTax" value="4800"></div>
+<div class="mct-form-group"><label>Annual Insurance ($)</label><input type="number" id="fhaIns" value="1200"></div></div>
+<button class="mct-btn mct-btn-primary" onclick="mctCalcFHA()" style="width:100%;">Calculate FHA Payment</button>
+<div class="mct-result-box" id="fhaResult" style="display:none;">
+<h4>FHA Monthly Payment</h4>
+<div class="mct-result-number" id="fhaTotal">$0</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px;font-size:0.9rem;">
+<div><div class="mct-result-label">P&I</div><div id="fhaPI" style="font-weight:600;">$0</div></div>
+<div><div class="mct-result-label">MIP (Annual)</div><div id="fhaMIP" style="font-weight:600;">$0</div></div>
+<div><div class="mct-result-label">Property Tax</div><div id="fhaTaxM" style="font-weight:600;">$0</div></div>
+<div><div class="mct-result-label">Insurance</div><div id="fhaInsM" style="font-weight:600;">$0</div></div></div>
+<div style="margin-top:15px;"><div class="mct-result-label">Upfront MIP (1.75%)</div><div id="fhaUF" style="font-weight:600;">$0</div></div>
+<div style="margin-top:5px;"><div class="mct-result-label">Minimum Down (3.5%)</div><div id="fhaMinD" style="font-weight:600;">$0</div></div>
+</div></div></div>
+<div class="mct-accordion-item">
+<div class="mct-accordion-header">2026 FHA Loan Limits Quick Reference</div>
+<div class="mct-accordion-body">
+<table style="width:100%;font-size:0.9rem;border-collapse:collapse;">
+<tr style="border-bottom:2px solid #00695c;"><th style="text-align:left;padding:8px;">Limit Type</th><th style="text-align:right;padding:8px;">Amount</th></tr>
+<tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:8px;">Floor (low-cost areas)</td><td style="text-align:right;padding:8px;">$541,287</td></tr>
+<tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:8px;">Ceiling (high-cost areas)</td><td style="text-align:right;padding:8px;">$1,249,125</td></tr>
+<tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:8px;">Minimum Down Payment</td><td style="text-align:right;padding:8px;">3.5%</td></tr>
+<tr style="border-bottom:1px solid #e0e0e0;"><td style="padding:8px;">Upfront MIP</td><td style="text-align:right;padding:8px;">1.75%</td></tr>
+<tr><td style="padding:8px;">Annual MIP (most loans)</td><td style="text-align:right;padding:8px;">0.55%</td></tr>
+</table></div></div>
+<div class="mct-accordion-item">
+<div class="mct-accordion-header">About This Tool</div>
+<div class="mct-accordion-body">
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Name:</strong> FHA Loan Calculator</p>
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Scene:</strong> Use when considering an FHA loan for a home purchase.</p>
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Method:</strong> Calculates FHA-specific costs including upfront MIP (1.75%) and annual MIP (0.55%).</p>
+<p style="font-size:0.85rem;color:#999;font-style:italic;"><strong>Disclaimer:</strong> FHA limits vary by county. Check your local limit.</p></div></div></div>
+<div class="mct-sticky-bar"><button class="mct-btn mct-btn-outline" onclick="mctSave()">Save</button><button class="mct-btn mct-btn-outline" onclick="mctExport()">Share</button></div>
+<div class="mct-ad-slot" data-ad-slot="tool_middle"></div>
+<div class="mct-related" style="margin-top:40px;">
+<h3>Related Articles</h3>
+<div class="mct-related-grid">
+<div class="mct-related-card"><h4><a href="../blog/fha-loan-guide-2026.html">FHA Loan Guide 2026</a></h4><p>Complete guide to FHA loans with new limits.</p></div>
+<div class="mct-related-card"><h4><a href="../blog/down-payment-strategies.html">Down Payment Strategies</a></h4><p>5 strategies to get you in the door faster.</p></div>
+<div class="mct-related-card"><h4><a href="../blog/first-time-buyer-mistakes.html">First-Time Buyer Mistakes</a></h4><p>Common mistakes and how to avoid them.</p></div>
+</div></div>
+
+<div class="mct-related" style="margin-top:40px;">
+  <h3>Related Tools</h3>
+  <div class="mct-related-grid">
+    <div class="mct-tool-card" style="cursor:pointer;" onclick="location.href='./mortgage-payment.html'"><div class="mct-tool-card-icon">🏠</div><h3>Mortgage Payment Calculator</h3><p>Calculate your full monthly PITI payment including taxes, insurance, and PMI.</p></div>
+<div class="mct-tool-card" style="cursor:pointer;" onclick="location.href='./affordability.html'"><div class="mct-tool-card-icon">💰</div><h3>Home Affordability Calculator</h3><p>Find out how much house you can actually afford.</p></div>
+<div class="mct-tool-card" style="cursor:pointer;" onclick="location.href='./down-payment.html'"><div class="mct-tool-card-icon">🎯</div><h3>Down Payment Savings Planner</h3><p>Plan your path to homeownership with a clear savings timeline.</p></div>
+  </div>
+</div>
+<div class="mct-ad-slot" data-ad-slot="tool_bottom"></div>
+</main>
+<footer class="mct-footer"><div class="mct-container">
+<div class="mct-footer-grid">
+<div class="mct-footer-col"><h4>Tools</h4><ul><li><a href="./mortgage-payment.html">Payment</a></li><li><a href="./refinance-calculator.html">Refinance</a></li><li><a href="./fha-loan.html">FHA</a></li><li><a href="./affordability.html">Affordability</a></li></ul></div>
+<div class="mct-footer-col"><h4>Blog</h4><ul><li><a href="../blog/index.html">Articles</a></li><li><a href="../faq.html">FAQ</a></li></ul></div>
+<div class="mct-footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../disclaimer.html">Disclaimer</a></li><li><a href="../disclosure.html">Ads</a></li></ul></div>
+<div class="mct-footer-col"><h4>About</h4><ul><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+</div>
+<div class="mct-footer-bottom"><p class="mct-disclaimer">Not mortgage advice.</p><p>MortgageCalcTool.org.</p></div>
+</div></footer>
+<script>
+document.querySelectorAll('.mct-accordion-header').forEach(function(h){h.addEventListener('click',function(){this.parentElement.classList.toggle('active');});});
+function mctCalcFHA(){
+var price=parseFloat(document.getElementById('fhaPrice').value)||0;
+var down=parseFloat(document.getElementById('fhaDown').value)||0;
+var rate=(parseFloat(document.getElementById('fhaRate').value)||0)/100;
+var term=parseInt(document.getElementById('fhaTerm').value)||30;
+var tax=(parseFloat(document.getElementById('fhaTax').value)||0)/12;
+var ins=(parseFloat(document.getElementById('fhaIns').value)||0)/12;
+var loan=price-down;
+var ufMIP=loan*0.0175;
+var totalLoan=loan+ufMIP;
+var mr=rate/12,n=term*12,pi=0;
+if(mr>0)pi=totalLoan*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);else pi=totalLoan/n;
+var annualMIP=loan*0.0055/12;
+var total=pi+tax+ins+annualMIP;
+document.getElementById('fhaTotal').textContent='$'+Math.round(total).toLocaleString();
+document.getElementById('fhaPI').textContent='$'+Math.round(pi).toLocaleString();
+document.getElementById('fhaMIP').textContent='$'+Math.round(annualMIP).toLocaleString();
+document.getElementById('fhaTaxM').textContent='$'+Math.round(tax).toLocaleString();
+document.getElementById('fhaInsM').textContent='$'+Math.round(ins).toLocaleString();
+document.getElementById('fhaUF').textContent='$'+Math.round(ufMIP).toLocaleString();
+document.getElementById('fhaMinD').textContent='$'+Math.round(price*0.035).toLocaleString()+' (3.5%)';
+
+      // Draw FHA cost breakdown chart
+      var canvas = document.getElementById('fhaChart');
+      if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.id = 'fhaChart';
+        canvas.className = 'mct-chart';
+        canvas.style.width = '100%';
+        canvas.style.height = '320px';
+        canvas.style.marginTop = '30px';
+        document.getElementById('fhaResult').appendChild(canvas);
+      }
+      var ctx = canvas.getContext('2d');
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
+      ctx.scale(dpr, dpr);
+      var w = canvas.offsetWidth, h = canvas.offsetHeight;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(0, 0, w, h);
+
+      var data = [
+        {label: 'P&I', value: pi, color: '#10b981'},
+        {label: 'MIP', value: annualMIP, color: '#ef4444'},
+        {label: 'Tax', value: tax, color: '#f59e0b'},
+        {label: 'Insurance', value: ins, color: '#3b82f6'}
+      ].filter(function(d) { return d.value > 0; });
+
+      var total = data.reduce(function(s, d) { return s + d.value; }, 0);
+      var cx = w / 2 - 60, cy = h / 2, r = Math.min(w, h) / 3;
+      var start = -Math.PI / 2;
+
+      data.forEach(function(d) {
+        var angle = (d.value / total) * 2 * Math.PI;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, start, start + angle);
+        ctx.closePath();
+        ctx.fillStyle = d.color;
+        ctx.fill();
+        start += angle;
+      });
+
+      var lx = w - 180, ly = 40;
+      data.forEach(function(d, i) {
+        ctx.fillStyle = d.color;
+        ctx.fillRect(lx, ly + i * 28, 14, 14);
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = '13px Inter';
+        ctx.fillText(d.label + ': $' + Math.round(d.value), lx + 22, ly + i * 28 + 12);
+      });
+
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = '16px Inter';
+      ctx.fillText('FHA Monthly Payment Breakdown', 20, 25);
+
+      document.getElementById('fhaResult').style.display='block';}
+</script>
+
+<script>
+// localStorage save/load
+function mctSave() {
+  var inputs = document.querySelectorAll('input, select');
+  var data = {};
+  inputs.forEach(function(el) { data[el.id] = el.value; });
+  var history = JSON.parse(localStorage.getItem('mct_fha-loan_history') || '[]');
+  history.push({date: new Date().toISOString(), data: data});
+  if (history.length > 10) history.shift();
+  localStorage.setItem('mct_fha-loan_history', JSON.stringify(history));
+  localStorage.setItem('mct_fha-loan_last', JSON.stringify(data));
+  alert('Saved!');
+}
+function mctLoad() {
+  var data = JSON.parse(localStorage.getItem('mct_fha-loan_last') || '{}');
+  for (var k in data) { var el = document.getElementById(k); if (el) el.value = data[k]; }
+  alert('Loaded!');
+}
+function mctReset() {
+  document.querySelectorAll('input, select').forEach(function(el) { el.value = el.defaultValue || ''; });
+  var results = document.querySelectorAll('.mct-result-box');
+  results.forEach(function(r) { r.style.display = 'none'; });
+}
+function mctExport() {
+  var text = document.querySelector('h1').textContent + '\n\n';
+  var inputs = document.querySelectorAll('input, select');
+  inputs.forEach(function(el) {
+    var label = el.previousElementSibling ? el.previousElementSibling.textContent : el.id;
+    text += label + ': ' + el.value + '\n';
+  });
+  text += '\nGenerated: ' + new Date().toLocaleString() + '\nFrom: MortgageCalcTool.org';
+  var blob = new Blob([text], {type: 'text/plain'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'fha-loan-results.txt';
+  a.click();
+}
+</script>
+
+</body></html>
