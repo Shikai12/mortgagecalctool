@@ -1,0 +1,21 @@
+{
+  "site_name": "MortgageCalcTool.org",
+  "domain": "mortgagecalctool.org",
+  "prefix": "mct-",
+  "language": "en",
+  "author": "Daniel O'Brien",
+  "author_email": "privacy@mortgagecalctool.org",
+  "location": "Boston, Massachusetts",
+  "theme": {
+    "primary": "#10b981",
+    "accent": "#f59e0b",
+    "background": "#0f172a",
+    "text": "#cbd5e1",
+    "heading_font": "Space Grotesk",
+    "body_font": "Inter"
+  },
+  "tools_count": 7,
+  "articles_count": 16,
+  "ads_enabled": true,
+  "build_date": "2026-06-10"
+}
