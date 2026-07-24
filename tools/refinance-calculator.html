@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Refinance Calculator - Free | MortgageCalcTool.org</title>
+<meta name="description" content="Free refinance break-even calculator. Find out when refinancing pays off.">
+<link rel="stylesheet" href="../style.css"><meta property="og:title" content="Refinance Calculator - Free | MortgageCalcTool.org">
+<meta property="og:description" content="Find out exactly when refinancing pays for itself. Compare your current loan vs. a new one.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mortgagecalctool.org/tools/refinance-calculator.html">
+<meta property="og:image" content="https://mortgagecalctool.org/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Refinance Calculator - Free | MortgageCalcTool.org">
+<meta name="twitter:description" content="Find out exactly when refinancing pays for itself. Compare your current loan vs. a new one.">
+<meta name="twitter:image" content="https://mortgagecalctool.org/images/og-image.jpg">
+<meta name="twitter:url" content="https://mortgagecalctool.org/tools/refinance-calculator.html">
+<link rel="canonical" href="https://mortgagecalctool.org/tools/refinance-calculator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Refinance Calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "url": "https://mortgagecalctool.org/tools/refinance-calculator.html"
+}
+</script>
+<script src="../ads-loader.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mortgagecalctool.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://mortgagecalctool.org/tools/index.html"},{"@type":"ListItem","position":3,"name":"Refinance Calculator","item":"https://mortgagecalctool.org/tools/refinance-calculator.html"}]}
+</script>
+</head>
+<body>
+<header class="mct-header"><div class="mct-header-inner">
+<a href="../index.html" class="mct-logo">MortgageCalc<span>Free Tools</span></a>
+<button class="mct-mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
+<nav><ul class="mct-nav" id="mainNav"><li><a href="../index.html">Home</a></li><li><a href="./index.html">Tools</a></li><li><a href="../blog/index.html">Blog</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<div class="mct-page-header">
+  <div class="mct-container">
+    <h1>Refinance Break-Even</h1>
+  </div>
+</div>
+<div class="mct-breadcrumb"><div class="mct-container"><a href="../index.html">Home</a> <span>/</span> <a href="./index.html">Tools</a> <span>/</span> Refinance</div>
+<div class="mct-ad-slot" data-ad-slot="tool_top"></div></div>
+<main class="mct-container mct-section" style="padding-top:20px;">
+<div class="mct-layout-sidebar">
+<div>
+<h1>Refinance Break-Even Calculator</h1>
+<p style="color:#64748b;margin-bottom:25px;">The old 1% rule is dead. Let's see what actually makes sense for your situation.</p>
+<div style="background:rgba(30,41,59,0.5);border-radius:10px;padding:25px;border:1px solid rgba(148,163,184,0.1);margin-bottom:25px;">
+<div class="mct-form-row">
+<div class="mct-form-group"><label>Current Loan Balance ($)</label><input type="number" id="rfBal" value="350000"></div>
+<div class="mct-form-group"><label>Current Rate (%)</label><input type="number" id="rfCurRate" value="7.0" step="0.1"></div></div>
+<div class="mct-form-row">
+<div class="mct-form-group"><label>New Rate (%)</label><input type="number" id="rfNewRate" value="6.1" step="0.1"></div>
+<div class="mct-form-group"><label>Closing Costs ($)</label><input type="number" id="rfCost" value="5000"></div></div>
+<div class="mct-form-row">
+<div class="mct-form-group"><label>Remaining Term (years)</label><input type="number" id="rfTerm" value="25"></div>
+<div class="mct-form-group"><label>New Loan Term (years)</label><input type="number" id="rfNewTerm" value="30"></div></div>
+<button class="mct-btn mct-btn-primary" onclick="mctCalcRF()" style="width:100%;">Calculate Break-Even</button>
+<div class="mct-result-box" id="rfResult" style="display:none;">
+<h4>Break-Even Analysis</h4>
+<div class="mct-result-number" id="rfMonths">0 months</div>
+<div style="margin-top:15px;">
+<div class="mct-result-label">Monthly Savings</div><div id="rfSave" style="font-weight:600;color:#2e7d32;">$0</div></div>
+<div style="margin-top:10px;">
+<div class="mct-result-label">Total Interest Savings (Life of Loan)</div><div id="rfTotalSave" style="font-weight:600;color:#2e7d32;">$0</div></div>
+<div style="margin-top:10px;">
+<div class="mct-result-label">New Monthly Payment</div><div id="rfNewPay" style="font-weight:600;">$0</div></div>
+</div></div></div>
+<aside>
+<div style="background:rgba(30,41,59,0.5);border-radius:10px;padding:25px;border:1px solid rgba(148,163,184,0.1);margin-bottom:25px;">
+<h3 style="font-size:1.1rem;margin-bottom:15px;">About This Tool</h3>
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Name:</strong> Refinance Break-Even Calculator</p>
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Scene:</strong> Use when considering refinancing your mortgage.</p>
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Method:</strong> Enter current loan details and proposed new rate. Calculates monthly savings and break-even point.</p>
+<p style="font-size:0.9rem;color:#64748b;margin-bottom:8px;"><strong>Interpretation:</strong> If you plan to stay in the home longer than the break-even months, refinancing likely makes sense.</p>
+<p style="font-size:0.85rem;color:#999;font-style:italic;"><strong>Disclaimer:</strong> Does not include all lender fees. Shop around.</p></div>
+<div style="background:rgba(30,41,59,0.5);border-radius:10px;padding:25px;border:1px solid rgba(148,163,184,0.1);">
+<h3 style="font-size:1.1rem;margin-bottom:15px;">Other Tools</h3>
+<ul style="list-style:none;font-size:0.9rem;"><li style="margin-bottom:8px;"><a href="./mortgage-payment.html">Mortgage Payment</a></li><li style="margin-bottom:8px;"><a href="./fha-loan.html">FHA Loan</a></li><li><a href="./arm-vs-fixed.html">ARM vs Fixed</a></li></ul></div>
+</aside></div>
+<div class="mct-ad-slot" data-ad-slot="tool_middle"></div>
+<div class="mct-related" style="margin-top:40px;">
+<h3>Related Articles</h3>
+<div class="mct-related-grid">
+<div class="mct-related-card"><h4><a href="../blog/refinance-rules-2026.html">When to Refinance in 2026</a></h4><p>The 1% rule is dead. Here's the new math.</p></div>
+<div class="mct-related-card"><h4><a href="../blog/mortgage-rates-forecast.html">Rates Forecast 2026</a></h4><p>Where rates are headed this year.</p></div>
+<div class="mct-related-card"><h4><a href="../blog/mortgage-points-guide.html">Should You Buy Points?</a></h4><p>Does it make sense in 2026?</p></div>
+</div></div>
+
+<div class="mct-related" style="margin-top:40px;">
+  <h3>Related Tools</h3>
+  <div class="mct-related-grid">
+    <div class="mct-tool-card" style="cursor:pointer;" onclick="location.href='./mortgage-payment.html'"><div class="mct-tool-card-icon">🏠</div><h3>Mortgage Payment Calculator</h3><p>Calculate your full monthly PITI payment including taxes, insurance, and PMI.</p></div>
+<div class="mct-tool-card" style="cursor:pointer;" onclick="location.href='./arm-vs-fixed.html'"><div class="mct-tool-card-icon">⚖️</div><h3>ARM vs Fixed Rate Comparison</h3><p>Compare adjustable-rate and fixed-rate mortgages side by side.</p></div>
+<div class="mct-tool-card" style="cursor:pointer;" onclick="location.href='./amortization.html'"><div class="mct-tool-card-icon">📊</div><h3>Amortization Schedule</h3><p>Generate a complete year-by-year breakdown of your loan.</p></div>
+  </div>
+</div>
+<div class="mct-ad-slot" data-ad-slot="tool_bottom"></div>
+</main>
+<footer class="mct-footer"><div class="mct-container">
+<div class="mct-footer-grid">
+<div class="mct-footer-col"><h4>Tools</h4><ul><li><a href="./mortgage-payment.html">Payment</a></li><li><a href="./refinance-calculator.html">Refinance</a></li><li><a href="./fha-loan.html">FHA</a></li><li><a href="./affordability.html">Affordability</a></li></ul></div>
+<div class="mct-footer-col"><h4>Blog</h4><ul><li><a href="../blog/index.html">Articles</a></li><li><a href="../faq.html">FAQ</a></li></ul></div>
+<div class="mct-footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../disclaimer.html">Disclaimer</a></li><li><a href="../disclosure.html">Ads</a></li></ul></div>
+<div class="mct-footer-col"><h4>About</h4><ul><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+</div>
+<div class="mct-footer-bottom"><p class="mct-disclaimer">Not mortgage advice.</p><p>MortgageCalcTool.org.</p></div>
+</div></footer>
+<script>
+function mctCalcRF(){
+var bal=parseFloat(document.getElementById('rfBal').value)||0;
+var cr=(parseFloat(document.getElementById('rfCurRate').value)||0)/100;
+var nr=(parseFloat(document.getElementById('rfNewRate').value)||0)/100;
+var cost=parseFloat(document.getElementById('rfCost').value)||0;
+var term=parseInt(document.getElementById('rfTerm').value)||25;
+var nt=parseInt(document.getElementById('rfNewTerm').value)||30;
+var mr=cr/12,n=term*12,cPay=0;
+if(mr>0)cPay=bal*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);else cPay=bal/n;
+var nm=nr/12,nn=nt*12,nPay=0;
+if(nm>0)nPay=bal*nm*Math.pow(1+nm,nn)/(Math.pow(1+nm,nn)-1);else nPay=bal/nn;
+var save=cPay-nPay;
+var months=save>0?Math.ceil(cost/save):0;
+var totalSave=save*n-cost;
+document.getElementById('rfMonths').textContent=months+' months';
+document.getElementById('rfSave').textContent='$'+Math.round(save).toLocaleString()+'/mo';
+document.getElementById('rfTotalSave').textContent='$'+Math.round(totalSave).toLocaleString();
+document.getElementById('rfNewPay').textContent='$'+Math.round(nPay).toLocaleString()+'/mo';
+
+      // Draw cumulative savings chart
+      var canvas = document.getElementById('rfChart');
+      if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.id = 'rfChart';
+        canvas.className = 'mct-chart';
+        canvas.style.width = '100%';
+        canvas.style.height = '320px';
+        canvas.style.marginTop = '30px';
+        document.getElementById('rfResult').appendChild(canvas);
+      }
+      var ctx = canvas.getContext('2d');
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
+      ctx.scale(dpr, dpr);
+      var w = canvas.offsetWidth, h = canvas.offsetHeight;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(0, 0, w, h);
+
+      var maxMonths = Math.min(120, Math.ceil(cost / save * 1.5));
+      var maxSave = save * maxMonths - cost;
+      var left = 50, right = w - 30, bottom = h - 40, top = 30;
+
+      ctx.strokeStyle = '#334155';
+      ctx.beginPath();
+      ctx.moveTo(left, bottom);
+      ctx.lineTo(right, bottom);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(left, top);
+      ctx.lineTo(left, bottom);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      for (var m = 0; m <= maxMonths; m++) {
+        var cumSave = save * m - cost;
+        var x = left + (m / maxMonths) * (right - left);
+        var y = bottom - (cumSave / maxSave) * (bottom - top);
+        if (m === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      var beM = Math.ceil(cost / save);
+      var beX = left + (beM / maxMonths) * (right - left);
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([5, 5]);
+      ctx.beginPath();
+      ctx.moveTo(beX, top);
+      ctx.lineTo(beX, bottom);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = '12px Inter';
+      ctx.fillText('Break-even', beX + 5, top + 15);
+
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = '16px Inter';
+      ctx.fillText('Cumulative Savings Over Time', 20, 25);
+
+      document.getElementById('rfResult').style.display='block';}
+</script>
+
+<script>
+// localStorage save/load
+function mctSave() {
+  var inputs = document.querySelectorAll('input, select');
+  var data = {};
+  inputs.forEach(function(el) { data[el.id] = el.value; });
+  var history = JSON.parse(localStorage.getItem('mct_refinance-calculator_history') || '[]');
+  history.push({date: new Date().toISOString(), data: data});
+  if (history.length > 10) history.shift();
+  localStorage.setItem('mct_refinance-calculator_history', JSON.stringify(history));
+  localStorage.setItem('mct_refinance-calculator_last', JSON.stringify(data));
+  alert('Saved!');
+}
+function mctLoad() {
+  var data = JSON.parse(localStorage.getItem('mct_refinance-calculator_last') || '{}');
+  for (var k in data) { var el = document.getElementById(k); if (el) el.value = data[k]; }
+  alert('Loaded!');
+}
+function mctReset() {
+  document.querySelectorAll('input, select').forEach(function(el) { el.value = el.defaultValue || ''; });
+  var results = document.querySelectorAll('.mct-result-box');
+  results.forEach(function(r) { r.style.display = 'none'; });
+}
+function mctExport() {
+  var text = document.querySelector('h1').textContent + '\n\n';
+  var inputs = document.querySelectorAll('input, select');
+  inputs.forEach(function(el) {
+    var label = el.previousElementSibling ? el.previousElementSibling.textContent : el.id;
+    text += label + ': ' + el.value + '\n';
+  });
+  text += '\nGenerated: ' + new Date().toLocaleString() + '\nFrom: MortgageCalcTool.org';
+  var blob = new Blob([text], {type: 'text/plain'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'refinance-calculator-results.txt';
+  a.click();
+}
+</script>
+
+</body></html>
